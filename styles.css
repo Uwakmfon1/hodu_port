@@ -4,7 +4,10 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Agbalumo", system-ui;
-  list-style: none;
+  /* list-style: none; */
+}
+ol{
+  list-style:decimal;
 }
 a {
   text-decoration: none;
@@ -32,6 +35,12 @@ h2 {
   font-family: sans-serif;
   font-size: 30px;
   font-weight: 300;
+  /* font-family: "Playwrite GB S", cursive; */
+}
+h2 a{
+  font-size: 30px;
+  font-weight: 300;
+  color: black;
 }
 
 #skills_heading {
@@ -42,6 +51,7 @@ h2 {
 
 h2:first-child {
     padding-right: 3em;
+    
   }
 
 .wrapper {
@@ -136,6 +146,9 @@ h2:first-child {
 
 input[type="checkbox"] {
   display: none;
+}
+ul li {
+  list-style: none;
 }
 
 .content {
