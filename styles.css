@@ -188,7 +188,7 @@ ul li {
     border-radius: 50%;
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 440px) {
   header {
     margin-left: 2em;
   }
@@ -202,7 +202,8 @@ ul li {
   }
 
   #footer {
-    margin-left: 40%;
+    /* display: none; */
+    margin-left: 20%;
   }
 
   h2 {
@@ -222,7 +223,7 @@ ul li {
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1020px) {
     header {
         margin-left: 2em;
       }
@@ -236,7 +237,7 @@ ul li {
       }
     
       #footer {
-        margin-left: 80%;
+       
       }
     
       h2 {
@@ -254,5 +255,37 @@ ul li {
         font-size: 30px;
         font-weight: 300;
       }
+}
 
+
+@media screen and (max-width: 1020px) {
+    header {
+        margin-left: 2em;
+      }
+    
+      body {
+        margin-left: 10%;
+      }
+    
+      .skills {
+        margin-left: 0;
+      }
+    
+     
+    
+      h2 {
+        font-size: 20px;
+      }
+    
+      h2:first-child {
+        padding-right: 20px;
+      }
+    .skills_section{
+        display: none;
+    }
+      #skills_heading {
+        font-family: sans-serif;
+        font-size: 30px;
+        font-weight: 300;
+      }
 }
