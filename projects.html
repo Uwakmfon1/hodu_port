@@ -90,30 +90,74 @@
     </header>
     <br /><br />
    <br /><br /><br /><br />
-    <div>
-    <img src="./profilepic2.jpg" alt="" class="img">
-</div>
+    <section class="hero">
+      <img src="./profilepic2.jpg" alt="Uwakmfon Udoh" class="img" />
+      <h1 class="hero-title">Uwakmfon Udoh</h1>
+    </section>
+
     <main>
-      <h1>Uwakmfon Udoh</h1>
-      <br />
      
 
      
 
       <br><br><br>
-      <div class="skills">
+      <section class="projects">
         <h1 id="projects" style="margin-bottom: 5px;">Projects</h1>
-        <hr style="margin-bottom: 10px;">
-        <ol style="list-style: decimal; margin-left: 2rem;">
-          <li><a href="#">Articles Blog Application</a> </li>
-          <li><a href="#">Realtime Chirper Application</a></li>
-          <li><a href="#">E-commerce Application</a></li>
-          <li><a href="#">Class Attendance Application</a></li>
-          <li><a href="#">Hotel's Visitor Management Api</a></li>
-        </ol>
-    </div>
-    <br>
-    <p>For a list of other projects <a href="https://github.com/Uwakmfon1" target="_blank">click here</a></p>
+        <hr style="margin-bottom: 10px;" />
+
+        <div class="projects-carousel">
+          <button class="carousel-btn prev" aria-label="Previous projects">‹</button>
+          <div class="projects-track" id="projectsTrack">
+            <article class="project-card">
+              <img src="https://via.placeholder.com/360x240?text=Articles+Blog" alt="Articles Blog Application" />
+              <div class="project-card-content">
+                <h3>Articles Blog Application</h3>
+                <p>A blogging platform for creating and reading articles.</p>
+                <a href="#" class="project-link">View project</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <img src="https://via.placeholder.com/360x240?text=Realtime+Chirper" alt="Realtime Chirper Application" />
+              <div class="project-card-content">
+                <h3>Realtime Chirper Application</h3>
+                <p>A realtime microblogging app with live updates.</p>
+                <a href="#" class="project-link">View project</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <img src="https://via.placeholder.com/360x240?text=E-commerce" alt="E-commerce Application" />
+              <div class="project-card-content">
+                <h3>E-commerce Application</h3>
+                <p>An online store with product listings and checkout flow.</p>
+                <a href="#" class="project-link">View project</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <img src="https://via.placeholder.com/360x240?text=Class+Attendance" alt="Class Attendance Application" />
+              <div class="project-card-content">
+                <h3>Class Attendance Application</h3>
+                <p>A system to track student attendance and attendance reports.</p>
+                <a href="#" class="project-link">View project</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <img src="https://via.placeholder.com/360x240?text=Visitor+Management" alt="Hotel's Visitor Management Api" />
+              <div class="project-card-content">
+                <h3>Hotel's Visitor Management API</h3>
+                <p>An API for managing visitor check-ins, check-outs, and records.</p>
+                <a href="#" class="project-link">View project</a>
+              </div>
+            </article>
+          </div>
+          <button class="carousel-btn next" aria-label="Next projects">›</button>
+        </div>
+      </section>
+      <br />
+      <p>For a list of other projects <a href="https://github.com/Uwakmfon1" target="_blank">click here</a></p>
 
       <br><br><br>
       <p>
@@ -175,7 +219,63 @@
         </ul>
       </p>
 
-    </main> <br><br><br>
+    </main>
+    <script>
+      (function () {
+        const track = document.getElementById('projectsTrack');
+        const cards = Array.from(track.querySelectorAll('.project-card'));
+
+        if (!track || cards.length === 0) return;
+
+        // Clone the first and last items
+        const firstCard = cards[0].cloneNode(true);
+        const lastCard = cards[cards.length - 1].cloneNode(true);
+
+        // Append first clone to end
+        track.appendChild(firstCard);
+
+        // Prepend last clone to start
+        track.insertBefore(lastCard, track.firstChild);
+
+        // Calculate card width including gap
+        const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+        const gapValue = getComputedStyle(track).gap;
+        const gap = gapValue.includes('rem') ? parseFloat(gapValue) * rootFontSize : parseFloat(gapValue) || 24;
+        const cardWidth = cards[0].offsetWidth + gap;
+
+        // Set initial scroll to after prepended last (real start)
+        const realStartIndex = 1;
+        track.scrollLeft = realStartIndex * cardWidth;
+
+        function handleScroll() {
+          const scrollLeft = track.scrollLeft;
+
+          // If scrolled to the appended first clone, reset to first real
+          if (scrollLeft >= (realStartIndex + cards.length) * cardWidth) {
+            track.scrollLeft = realStartIndex * cardWidth;
+          }
+          // If scrolled to the prepended last clone, reset to last real
+          else if (scrollLeft <= 0) {
+            track.scrollLeft = (realStartIndex + cards.length - 1) * cardWidth;
+          }
+        }
+
+        track.addEventListener('scroll', handleScroll);
+
+        // Arrow buttons
+        const prevBtn = document.querySelector('.carousel-btn.prev');
+        const nextBtn = document.querySelector('.carousel-btn.next');
+
+        prevBtn?.addEventListener('click', () => {
+          track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        });
+
+        nextBtn?.addEventListener('click', () => {
+          track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        });
+      })();
+    </script>
+    <br><br><br>
     <footer id="footer">
         &copycopyright2024
     </footer> <br><br>
